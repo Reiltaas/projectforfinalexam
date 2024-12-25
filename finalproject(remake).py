@@ -58,7 +58,6 @@ def initmode():
     elif select == 3:
         usermode()
     elif select == 4:
-        print("Exiting program...")
         exit()
     else:
         initmode()
@@ -488,7 +487,7 @@ def contview(return_func):
         contview(return_func)
         
 
-def contedit():
+def contedit(): #admin only work in progress
     print("You have chosen Edit Contacts.")
     print("Please choose the desired mode.\n")
     print("1. Add Contact")
@@ -507,30 +506,12 @@ def contedit():
 
 def addcont():
     print("Add a new Contact.")
-    name = input("Enter the name: ")
-    number = input("Enter the phone number: ")
-    division = input("Enter the division: ")
-    contacts.append(Contact(name, number, division))
-    print("Contact successfully added!")
-    contmain()
 
 def deletecont():
     print("Delete a Contact.")
-    name = input("Enter the name of the contact to delete: ")
-    global contacts
-    contacts = [contact for contact in contacts if contact.name != name]
-    print("Contact deleted if it existed.")
-    contmain()
 
 def contviewall():
     print("View all Contacts.")
-    if contacts:
-        for contact in contacts:
-            print(f"Name: {contact.name}, Phone: {contact.number}, Division: {contact.division}")
-    else:
-        print("No contacts available.")
-    input("Press Enter to return.")
-    contmain()
     
 def contviewdiv():
     print("enter")
