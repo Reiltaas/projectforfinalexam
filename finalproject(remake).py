@@ -523,8 +523,8 @@ def addcont():
             #emg buat apa try? try itu salah satu bagian code dimana mereka "mencoba" codenya buat error jadi merekan kaya suruh codenya untuk "coda dah code ini jika mereka memberikan integer tapi kalau ga jalanin except"
             divchoice = int(input("Select a division (1-5): "))
             if 1 <= divchoice <= 5:
-                divisions = ["Monaka", "Mya", "Rimu", "Moth", "Yuina"]
-                division = divisions[divchoice - 1] #alasan knp gw kasih -1 karena di list buat python kan mereka mulainya dari 0 jadi kalau gw masukin satu di choice mereka malah bakal ke list yg kedua dan itu "Mya" jadi
+                division = ["Monaka", "Mya", "Rimu", "Moth", "Yuina"]
+                div = division[divchoice - 1] #alasan knp gw kasih -1 karena di list buat python kan mereka mulainya dari 0 jadi kalau gw masukin satu di choice mereka malah bakal ke list yg kedua dan itu "Mya" jadi
                 #untuk ngecounter ini gw kasih -1 biar input kita di kurangin 1 aja dari pada suruh mereka masukin 0-4
                 break
             else:
@@ -532,12 +532,12 @@ def addcont():
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    new_contact = Contact(name, number, division)
-    contacts.append(new_contact)
+    newcont = Contact(name, number, div)
+    contacts.append(newcont)
     
     save()
     
-    print(f"Contact {name} added successfully under division {division}.")
+    print(f"Contact {name} added successfully under division {div}.")
     policemode2()
 
 
@@ -550,7 +550,38 @@ def contviewall():
 
     
 def contviewdiv():
-    print("enter")
+    print("View Contact by Division")
+    print("Please choose a division:")
+    print("1. Monaka")
+    print("2. Mya")
+    print("3. Rimu")
+    print("4. Moth")
+    print("5. Yuina")
+    
+    while True:
+        try:
+            divchoice = int(input("Select a division (1-5): "))
+            if 1 <= divchoice <= 5:
+                division = ["Monaka", "Mya", "Rimu", "Moth", "Yuina"]
+                newdiv = division[divchoice - 1] 
+               
+            else:
+                print("Invalid choice. do it again")
+                contviewdiv()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            
+        print(f"Here are the list of contacts in {newdiv}: ")
+        found = False #kita initialisasi dimana found itu false jadi artinya blm ada contact jadi 0
+        for contact in contacts: #mereka akan jalankan looping ini
+            if contact.division == newdiv:
+                print(f"Name : {contact.name},  Phone Number: {contact.number}")
+                found = True #kita bikin foundnya jadi true
+                
+        if not found: #kalau found ini masih false dan tidak berubah menjadi true mereka akan jalankan ini tp kalau jadi true ini akan di exclude itu utamanya not
+            print("No Contact in this Division")
+        policemode2()
+
     
 def goback(return_func):
     print("Do you want to go back to the login page?")
