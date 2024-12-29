@@ -1,0 +1,3 @@
+12/27 : changes in the file handling on line 195 and 245 so that it wont clash with the global statement of others
+12/28 : added add contacts but not per division only name and phone number
+12/29 : added the division choice now they can add depending on the division they want gonna work on viewing per-division
