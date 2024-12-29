@@ -511,19 +511,21 @@ def addcont():
     number = input("Phone Number: ")
     
     print("Please choose a division:")
-    print("1. Place")
-    print("2. Cokn")
-    print("3. Wow")
+    print("1. Monaka")
+    print("2. Mya")
+    print("3. Rimu")
     print("4. Moth")
     print("5. Yuina")
 
    
     while True:
-        try:
+        try: #karena kita akan membuat jawabannya menjadi integer buat main aman gw masukin try biar jalan codenya 
+            #emg buat apa try? try itu salah satu bagian code dimana mereka "mencoba" codenya buat error jadi merekan kaya suruh codenya untuk "coda dah code ini jika mereka memberikan integer tapi kalau ga jalanin except"
             divchoice = int(input("Select a division (1-5): "))
             if 1 <= divchoice <= 5:
-                divisions = ["Place", "Cokn", "Wow", "Moth", "Yuina"]
-                division = divisions[divchoice - 1]
+                divisions = ["Monaka", "Mya", "Rimu", "Moth", "Yuina"]
+                division = divisions[divchoice - 1] #alasan knp gw kasih -1 karena di list buat python kan mereka mulainya dari 0 jadi kalau gw masukin satu di choice mereka malah bakal ke list yg kedua dan itu "Mya" jadi
+                #untuk ngecounter ini gw kasih -1 biar input kita di kurangin 1 aja dari pada suruh mereka masukin 0-4
                 break
             else:
                 print("Invalid choice. Please select a number between 1 and 5.")
