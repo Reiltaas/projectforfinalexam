@@ -58,6 +58,7 @@ def initmode():
     elif select == 3:
         usermode()
     elif select == 4:
+        print("Exiting program...")
         exit()
     else:
         initmode()
@@ -183,6 +184,8 @@ def changedetailpol():
     accadmin()
 
 def deletepol():
+    global police_accounts
+    
     print("You are viewing the account for police")
     if not police_accounts: 
         print("No account registerd")
@@ -191,7 +194,6 @@ def deletepol():
             print(f"Username: {acc.username}")
     username = str(input("Enter the username you want to delete (case sensitive): "))
     
-    global police_accounts
     police_accounts = [acc for acc in police_accounts if acc.username != username] #ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
     #arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
     #jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
@@ -199,9 +201,7 @@ def deletepol():
     print(f"Username : {username} have been deleted")
     
     accadmin()
-           
-
-      
+             
     
 def editaccuser(): #ini sama aja kaya yg editpolice cuman beda di penamaan di fungsi fungsinya
     print("You are editing account for User")
@@ -239,6 +239,7 @@ def changedetailuser():
     accadmin()
 
 def deleteuser():
+    global user_accounts
     print("You are viewing the account for police")
     if not user_accounts: 
         print("No account registerd")
@@ -247,7 +248,6 @@ def deleteuser():
             print(f"Username: {acc.username}")
     username = str(input("Enter the username you want to delete (case sensitive): "))
     
-    global user_accounts
     user_accounts = [acc for acc in user_accounts if acc.username != username] #ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
     #arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
     #jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
@@ -279,7 +279,7 @@ def viewallacc():
     for account in police_accounts + user_accounts:
         print(f"Username: {account.username}, Role: {'Police' if account in police_accounts else 'User'}\n")
         
-    choose = str(input(print("Do you want to go back? (Yes/No)")).strip().lower())
+    choose = str(input(print("Do you want to go back? (Yes/No)")).strip().lower()) #artinya dari strip itu bisa di bilang mereka itu ngilang yg namanya "white space" apa artinya? mereka ngilangin spasi tabs dan enter dari kata yang di inputkan dan di ganti dengan lower biar jadi auto lower case selalu
     if choose == 'yes':
         adminmode2()
     elif choose == 'no':
@@ -487,7 +487,7 @@ def contview(return_func):
         contview(return_func)
         
 
-def contedit(): #admin only work in progress
+def contedit():
     print("You have chosen Edit Contacts.")
     print("Please choose the desired mode.\n")
     print("1. Add Contact")
@@ -506,12 +506,46 @@ def contedit(): #admin only work in progress
 
 def addcont():
     print("Add a new Contact.")
+ 
+    name = input("Name: ")
+    number = input("Phone Number: ")
+    
+    print("Please choose a division:")
+    print("1. Place")
+    print("2. Cokn")
+    print("3. Wow")
+    print("4. Moth")
+    print("5. Yuina")
+
+   
+    while True:
+        try:
+            divchoice = int(input("Select a division (1-5): "))
+            if 1 <= divchoice <= 5:
+                divisions = ["Place", "Cokn", "Wow", "Moth", "Yuina"]
+                division = divisions[divchoice - 1]
+                break
+            else:
+                print("Invalid choice. Please select a number between 1 and 5.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+    new_contact = Contact(name, number, division)
+    contacts.append(new_contact)
+    
+    save()
+    
+    print(f"Contact {name} added successfully under division {division}.")
+    policemode2()
+
 
 def deletecont():
     print("Delete a Contact.")
 
+
 def contviewall():
     print("View all Contacts.")
+
     
 def contviewdiv():
     print("enter")
