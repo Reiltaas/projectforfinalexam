@@ -30,7 +30,7 @@ def load(): #fungsi ini khusus buat nge load file kaya lu nge load file di game 
         with open('user_accounts.pkl', 'rb') as f:
             user_accounts =  pickle.load(f) #tambahan knp di dalam 'f'? karena kita sudah bilang bahwa os.path itu di representasikan dengan huruf f jadi dari pada tulis semua kita tulis apa yg kita udh representasikan aja
             
-    if os.path.exists('contacts.pk'):
+    if os.path.exists('contacts.pkl'):
         with open('contacts.pkl', 'rb') as f:
             contacts = pickle.load(f)
 
@@ -438,7 +438,6 @@ def usermode2():
     global mode
     for account in user_accounts:
         print(f"Welcome to the main menu {account.username}")
-        print("Please choose the desired options")
         print("Please choose what you want to do.")
         print("1. View a Contact")
         print("2. Log out")
@@ -478,9 +477,9 @@ def contview(return_func):
     
     select = int(input("Select: "))
     if select == 1:
-        contviewall()
+        contviewall(return_func)
     elif select == 2:
-        contviewdiv()
+        contviewdiv(return_func)
     elif select == 3:
         return_func()
     else:
@@ -543,13 +542,33 @@ def addcont():
 
 def deletecont():
     print("Delete a Contact.")
+    global contacts
+    
+    print("You are viewing the account for police")
+    if not contacts: 
+        print("No account registerd")
+    else:
+        for con in contacts:
+            print(f"Username: {con.name}")
+    name = str(input("Enter the username you want to delete (case sensitive): "))
+    
+    contacts = [con for con in contacts if con.name != name] 
+    
+    print(f"Username : {name} have been deleted")
+    
+    contmain()
 
 
-def contviewall():
-    print("View all Contacts.")
+def contviewall(return_func):
+    print("You are viewing all accounts")
+    
+    for contact in contacts:
+        print(f"Name: {contact.name}, Phone Number: {contact.number} ")
+        
+    return_func()
 
     
-def contviewdiv():
+def contviewdiv(return_func):
     print("View Contact by Division")
     print("Please choose a division:")
     print("1. Monaka")
@@ -580,7 +599,7 @@ def contviewdiv():
                 
         if not found: #kalau found ini masih false dan tidak berubah menjadi true mereka akan jalankan ini tp kalau jadi true ini akan di exclude itu utamanya not
             print("No Contact in this Division")
-        policemode2()
+        return_func()
 
     
 def goback(return_func):
@@ -598,8 +617,20 @@ def goback(return_func):
         initmode()
     else:
         goback(return_func)
+
         
-        
+def backfromcont(return_func):
+    print("Do you want to go back?")
+    
+    choose = (input("Yes/No : ").strip().lower())
+    if choose == "yes":
+        if return_func == 'police':
+            policemode2()
+        elif return_func == 'user':
+            usermode2()
+        else:
+            contviewall()
+            
     
 load()
 initmode()
