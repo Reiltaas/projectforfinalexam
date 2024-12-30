@@ -43,7 +43,7 @@ def save():
 
 def initmode():
     global mode
-    print("Please choose the desired mode.\n")
+    print("\nPlease choose the desired mode.\n")
     print("1. Admin")
     print("2. Police")
     print("3. User")
@@ -64,7 +64,7 @@ def initmode():
 
 def adminmode():
     global tries
-    print("You have chosen Admin.")
+    print("\nYou have chosen Admin.")
     print("Please choose the desired mode.\n")
     print("1. Login")
     print("2. Back to the home page\n")
@@ -95,7 +95,7 @@ def logadmin():
 
 def adminmode2():
     global mode #ignore
-    print("Welcome to the main menu!")
+    print("\nWelcome to the main menu!")
     print("Your current role is Admin\n")
     print("1. Accounts")
     print("2. Contacts")
@@ -112,7 +112,7 @@ def adminmode2():
         adminmode2()
 
 def accadmin(): 
-    print("You have chosen Accounts.")
+    print("\nYou have chosen Accounts.")
     print("Please choose the desired mode.\n")
     print("1. View the currently registered accounts")
     print("2. Edit the currently registered accounts")
@@ -129,7 +129,7 @@ def accadmin():
         accadmin()
         
 def editacc(): 
-    print("You have chosen edit account")
+    print("\nYou have chosen edit account")
     print("Please choose what you want to do")
     print("1. Edit a Police account")
     print("2. Edit a User account")
@@ -146,7 +146,7 @@ def editacc():
         editacc()
         
 def editaccpolice():
-    print("You are editing account for Police")
+    print("\nYou are editing account for Police")
     print("What would you like to do?")
     print("1. Change username or password")
     print("2. Delete account")
@@ -199,7 +199,7 @@ def deletepol():
              
     
 def editaccuser():
-    print("You are editing account for User")
+    print("\nYou are editing account for User")
     print("What would you like to do?")
     print("1. Change username or password")
     print("2. Delete account")
@@ -251,7 +251,7 @@ def deleteuser():
 
 
 def viewacc():
-    print("Choose what you want.\n")
+    print("\nChoose what you want.\n")
     print("1. View all accounts")
     print("2. View only Police")
     print("3. View only User")
@@ -312,7 +312,7 @@ def viewonlyuser():
     
     
 def policemode():
-    print("You have chosen Police.")
+    print("\nYou have chosen Police.")
     print("Please choose the desired mode.\n")
     print("1. Login")
     print("2. Register")
@@ -329,7 +329,7 @@ def policemode():
         policemode()
 
 def usermode():
-    print("You have chosen User.")
+    print("\nYou have chosen User.")
     print("Please choose the desired mode.\n")
     print("1. Login")
     print("2. Register")
@@ -399,7 +399,7 @@ def login_police():
 
 def policemode2():
     global mode
-    print("Welcome your current role is Police!")
+    print("\nWelcome your current role is Police!")
     print("Please choose what you want to do.")
     print("1. Add a Contact")
     print("2. View Contacts")
@@ -445,7 +445,7 @@ def usermode2():
             
         
 def contmain():
-    print("You have chosen Contacts.")
+    print("\nYou have chosen Contacts.")
     print("Please choose the desired mode.\n")
     print("1. View Contacts")
     print("2. Edit Contacts")
@@ -462,7 +462,7 @@ def contmain():
         contmain()
     
 def contview(return_func):
-    print("You have Chosen View Contacts")
+    print("\nYou have Chosen View Contacts")
     print("Please choose the desired mode.\n")
     print("1. View all Contacts")
     print("2. View Per-Division")
@@ -566,7 +566,7 @@ def contviewdiv(return_func):
     print("2. Mya")
     print("3. Rimu")
     print("4. Moth")
-    print("5. Yuina")
+    print("5. Yuina\n")
     
     while True:
         try:
