@@ -12,7 +12,6 @@ class Contact:
         self.number = number
         self.division = division
 
-# ini global integers jadi gw bisa pake ke mana mana
 admin_account = Account("a", "a")
 police_accounts = []
 user_accounts = []
@@ -20,22 +19,22 @@ contacts = []
 tries = 3
 mode = 0
 
-def load(): #fungsi ini khusus buat nge load file kaya lu nge load file di game ini fungsinya ini tuh namanya file handling cuman nambahin ini aja dan beberapa di fungsi lain
-    global police_accounts, user_accounts, contacts #ini ngabil dari fungsi global di atas buat disini
+def load(): 
+    global police_accounts, user_accounts, contacts 
     if os.path.exists('police_accounts.pkl'):
         with open('police_accounts.pkl','rb') as f:
-            police_accounts = pickle.load(f) #ini artinya ngeload file police_account dalam mode read binary jadi cuman baca doang
+            police_accounts = pickle.load(f) 
             
     if os.path.exists('user_accounts.pkl'):
         with open('user_accounts.pkl', 'rb') as f:
-            user_accounts =  pickle.load(f) #tambahan knp di dalam 'f'? karena kita sudah bilang bahwa os.path itu di representasikan dengan huruf f jadi dari pada tulis semua kita tulis apa yg kita udh representasikan aja
+            user_accounts =  pickle.load(f)
             
     if os.path.exists('contacts.pkl'):
         with open('contacts.pkl', 'rb') as f:
             contacts = pickle.load(f)
 
-def save(): #khusus buat ngesave data biar bisa di save atau di overwrite data
-    with open('police_accounts.pkl','wb') as f: #kita edit file yg udh di bilin di load() dan buka dengan tipe AB maksudnya append binary artinya lu bisa nge update dari pada cuman overwrite 
+def save():
+    with open('police_accounts.pkl','wb') as f:
         pickle.dump(police_accounts, f)
     with open('user_accounts.pkl', 'wb') as f:
         pickle.dump(user_accounts, f)
@@ -85,7 +84,7 @@ def logadmin():
         username = input("Username: ")
         password = input("Password: ")
 
-        if username == admin_account.username and password == admin_account.password: #compare kalau password sama username lu sama atau ga
+        if username == admin_account.username and password == admin_account.password: 
             adminmode2()
         else:
             tries -= 1
@@ -112,7 +111,7 @@ def adminmode2():
     else:
         adminmode2()
 
-def accadmin(): #cuman bisa di access sama admin
+def accadmin(): 
     print("You have chosen Accounts.")
     print("Please choose the desired mode.\n")
     print("1. View the currently registered accounts")
@@ -161,22 +160,20 @@ def editaccpolice():
     
 def changedetailpol():
     print("You are viewing the account for police")
-    if not police_accounts: #ini untuk bilang kalau ga ada data di codenya bakal jalanin code di bawah
+    if not police_accounts: 
         print("No account registerd")
     else:
         for acc in police_accounts:
             print(f"Username: {acc.username}")
     username = str(input("Enter the username you want to edit: "))
     
-    account = next((acc for acc in police_accounts if acc.username == username), None) #ini untuk ngesearch apakah usernamenya ada atau ga
-    #cara nya dengan mereka menggunakan integer "acc" dan mengabil dari list Police_accounts dengan menganbil acc yang di sini dengan acc yang di atas kita juga ngebilangin bahwa acc.username sama username yang di input itu sama
-    #dengan membilang bahwa acc.username == username [nanti gw jelasin lebih jelas]
+    account = next((acc for acc in police_accounts if acc.username == username), None) 
     
-    if account: #ini untuk ngeinput username sama password baru
+    if account: 
         new_username = str(input("Enter new username (Dont write if you want to keep the same one): "))
         new_password = (input("Enter new password (same thing leave it blank if you want to keep): "))
     
-    if new_username: #ini dua untuk ngeupdate file/list supaya mereka ngeganti jadi password yg baru
+    if new_username: 
         account.username = new_username
     if new_password:
         account.password = new_password
@@ -194,16 +191,14 @@ def deletepol():
             print(f"Username: {acc.username}")
     username = str(input("Enter the username you want to delete (case sensitive): "))
     
-    police_accounts = [acc for acc in police_accounts if acc.username != username] #ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
-    #arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
-    #jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
+    police_accounts = [acc for acc in police_accounts if acc.username != username] 
     
     print(f"Username : {username} have been deleted")
     
     accadmin()
              
     
-def editaccuser(): #ini sama aja kaya yg editpolice cuman beda di penamaan di fungsi fungsinya
+def editaccuser():
     print("You are editing account for User")
     print("What would you like to do?")
     print("1. Change username or password")
@@ -248,9 +243,7 @@ def deleteuser():
             print(f"Username: {acc.username}")
     username = str(input("Enter the username you want to delete (case sensitive): "))
     
-    user_accounts = [acc for acc in user_accounts if acc.username != username] #ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
-    #arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
-    #jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
+    user_accounts = [acc for acc in user_accounts if acc.username != username] 
     
     print(f"Username : {username} have been deleted")
     
@@ -279,7 +272,7 @@ def viewallacc():
     for account in police_accounts + user_accounts:
         print(f"Username: {account.username}, Role: {'Police' if account in police_accounts else 'User'}\n")
         
-    choose = str(input(print("Do you want to go back? (Yes/No)")).strip().lower()) #artinya dari strip itu bisa di bilang mereka itu ngilang yg namanya "white space" apa artinya? mereka ngilangin spasi tabs dan enter dari kata yang di inputkan dan di ganti dengan lower biar jadi auto lower case selalu
+    choose = str(input(print("Do you want to go back? (Yes/No)")).strip().lower())
     if choose == 'yes':
         adminmode2()
     elif choose == 'no':
@@ -358,7 +351,7 @@ def register_police():
     password = input("Enter a password: ")
     confirm_password = input("Confirm your password: ")
 
-    if any(account.username == username for account in police_accounts): #khusus ngecheck kalau namanya udh di ambil atau tidak dengan ngecompare yg udh ada di list sama yg di tulis
+    if any(account.username == username for account in police_accounts): 
         print("Username exist please make another one :)")
         return register_police()
         
@@ -518,13 +511,11 @@ def addcont():
 
    
     while True:
-        try: #karena kita akan membuat jawabannya menjadi integer buat main aman gw masukin try biar jalan codenya 
-            #emg buat apa try? try itu salah satu bagian code dimana mereka "mencoba" codenya buat error jadi merekan kaya suruh codenya untuk "coda dah code ini jika mereka memberikan integer tapi kalau ga jalanin except"
+        try: 
             divchoice = int(input("Select a division (1-5): "))
             if 1 <= divchoice <= 5:
                 division = ["Monaka", "Mya", "Rimu", "Moth", "Yuina"]
-                div = division[divchoice - 1] #alasan knp gw kasih -1 karena di list buat python kan mereka mulainya dari 0 jadi kalau gw masukin satu di choice mereka malah bakal ke list yg kedua dan itu "Mya" jadi
-                #untuk ngecounter ini gw kasih -1 biar input kita di kurangin 1 aja dari pada suruh mereka masukin 0-4
+                div = division[divchoice - 1] 
                 break
             else:
                 print("Invalid choice. Please select a number between 1 and 5.")
@@ -591,13 +582,13 @@ def contviewdiv(return_func):
             print("Invalid input. Please enter a number.")
             
         print(f"Here are the list of contacts in {newdiv}: ")
-        found = False #kita initialisasi dimana found itu false jadi artinya blm ada contact jadi 0
-        for contact in contacts: #mereka akan jalankan looping ini
+        found = False 
+        for contact in contacts: 
             if contact.division == newdiv:
                 print(f"Name : {contact.name},  Phone Number: {contact.number}")
-                found = True #kita bikin foundnya jadi true
+                found = True 
                 
-        if not found: #kalau found ini masih false dan tidak berubah menjadi true mereka akan jalankan ini tp kalau jadi true ini akan di exclude itu utamanya not
+        if not found: 
             print("No Contact in this Division")
         return_func()
 
