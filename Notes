@@ -1,0 +1,71 @@
+Line 16 : # ini global integers jadi gw bisa pake ke mana mana
+
+Line 22: #fungsi ini khusus buat nge load file kaya lu nge load file di game ini fungsinya ini tuh namanya file handling cuman nambahin ini aja dan beberapa di fungsi lain
+
+Line 23: #ini ngabil dari fungsi global di atas buat disini
+
+Line 26 : #ini artinya ngeload file police_account dalam mode read binary jadi cuman baca doang
+
+Line 30 :  #tambahan knp di dalam 'f'? karena kita sudah bilang bahwa os.path itu di representasikan dengan huruf f jadi dari pada tulis semua kita tulis apa yg kita udh representasikan aja
+
+Line 36 :  #khusus buat ngesave data biar bisa di save atau di overwrite data
+
+Line 37 :  #kita edit file yg udh di bilin di load() dan buka dengan tipe AB maksudnya append binary artinya lu bisa nge update dari pada cuman overwrite 
+
+line 87 : #compare kalau password sama apa yang lu input sama atau ga
+
+Line 163 : #ini untuk bilang kalau ga ada data di codenya bakal jalanin code di bawah
+
+Line 170 : #ini untuk ngesearch apakah usernamenya ada atau ga
+#cara nya dengan mereka menggunakan integer "acc" dan mengabil dari list Police_accounts dengan menganbil acc yang di sini dengan acc yang di atas kita juga ngebilangin bahwa acc.username sama username yang di input itu sama
+#dengan membilang bahwa acc.username == username [nanti gw jelasin lebih jelas]
+
+line 172 : #ini untuk ngeinput username sama password baru
+
+Line 176 : #ini dua untuk ngeupdate file/list supaya mereka ngeganti jadi password yg baru
+
+Line 194 : 
+#ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
+#arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
+#jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
+
+Line 246 : #ini kalau mau gw jelasin jadi mereka nge cek dulu data satu persatu
+#arti dari acc.username != username kalau yg sebelumnya itu di masukin ke filenya kalau yg ini data yang tidak sama dari apa yang kita inputkan itu tidak akan di masukan ke file tersebut
+#jadi ilang aja yg di ouputkan atau yg di tetapkan di file itu yg tidak sama dengan apa yg kita input
+
+Line 275 :  #artinya dari strip itu bisa di bilang mereka itu ngilang yg namanya "white space" apa artinya? mereka ngilangin spasi tabs dan enter dari kata yang di inputkan dan di ganti dengan lower biar jadi auto lower case selalu
+
+Line 514 : #karena kita akan membuat jawabannya menjadi integer buat main aman gw masukin try biar jalan codenya 
+#emg buat apa try? try itu salah satu bagian code dimana mereka "mencoba" codenya buat error jadi merekan kaya suruh codenya untuk "coda dah code ini jika mereka memberikan integer tapi kalau ga jalanin except"
+
+Line 519 : #alasan knp gw kasih -1 karena di list buat python kan mereka mulainya dari 0 jadi kalau gw masukin satu di choice mereka malah bakal ke list yg kedua dan itu "Mya" jadi
+#untuk ngecounter ini gw kasih -1 biar input kita di kurangin 1 aja dari pada suruh mereka masukin 0-4
+
+Line 585 : #kita initialisasi dimana found itu false jadi artinya blm ada contact jadi 0
+
+Line 586 : #mereka akan jalankan looping ini
+
+Line 591 : #kalau found ini masih false dan tidak berubah menjadi true mereka akan jalankan ini tp kalau jadi true ini akan di exclude itu utamanya not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
